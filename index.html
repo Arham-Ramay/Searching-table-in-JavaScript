@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vanilla.js</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand">TechnoKloud</a>
+        <a class="navbar-brand">Vanilla.js / Ass No 1</a>
+      </div>
+    </nav>
+
+    <input type="search" id="search" placeholder="Search BY Id / Name / University Or Status" />
+    <button id="button" onclick="searching()">click Here</button>
+
+<button onclick="color()">click</button>
+
+    <div class="container">
+      <table class="table mt-4">
+        <tr id="row" class="bg-info">
+          <th>ID</th>
+          <th>NAME</th>
+          <th>DEGREE</th>
+
+          <th>STATUS</th>
+          <th>UNIVERSITY</th>
+        </tr>
+        <tbody id="myTable"></tbody>
+      </table>
+    </div>
+    <script>
+      const DATA = [
+        {
+          id: 0,
+          name: "Subhan",
+          degree: "BSCS",
+          status: "Graduated",
+          university: "GCUF",
+        },
+        {
+          id: 1,
+          name: "Arham",
+          degree: "BSSE",
+          status: "In progress",
+          university: "GCUF",
+        },
+        {
+          id: 2,
+          name: "Umer",
+          degree: "BSEL",
+          status: "Graduated",
+          university: "GCUF",
+        },
+        {
+          id: 3,
+          name: "Asad",
+          degree: "BSUL",
+          status: "In progress",
+          university: "GCUF",
+        },
+        {
+          id: 4,
+          name: "Zohaib",
+          degree: "BSCS",
+          status: "Graduated",
+          university: "GCUF",
+        },
+        {
+          id: 5,
+          name: "Ahmad",
+          degree: "BSIT",
+          status: "In progress",
+          university: "GCUF",
+        },
+      ];
+
+      let searching = () => {
+        let x = document.getElementById("search").value;
+        let compare = x;
+        if (x == "" || x === null) {
+          alert("write something");
+        } else {
+          var table = document.getElementById("myTable");
+
+          DATA.forEach((value, index) => {
+            if (
+              x == DATA[index].name ||
+              x == DATA[index].university ||
+              x == DATA[index].id ||
+              x == DATA[index].degree||
+              x == DATA[index].status
+
+            ) {
+              buildTable(value, index, table);
+            }
+          });
+        }
+      };
+      let change = (value, index, table) => {
+        console.log("arham");
+      };
+
+      function buildTable(value, index, table) {
+        let i = index;
+
+        do {
+          var row = `<tr id="row"=${index}>
+            <td>${DATA[index].id}</td>
+            <td>${DATA[index].name}</td>
+            <td>${DATA[index].degree}</td>
+            <td>${DATA[index].status}</td>
+            <td>${DATA[index].university}</td>
+            </tr>`;
+          table.innerHTML += row;
+        } while (index == -1);
+      }
+      const color = () => {
+        DATA.forEach((item, index) => {
+          if (DATA[index].status=="Graduated") {
+            document.getElementById(index).style.backgroundColor = "green";
+          }
+        });
+      };
+      
+    </script>
+  </body>
+</html>
